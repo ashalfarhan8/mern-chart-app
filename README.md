@@ -1,1 +1,3 @@
-﻿### mern-chart-app
+﻿# Chart App
+
+## Built with MERN
