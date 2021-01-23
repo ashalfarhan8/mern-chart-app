@@ -16,7 +16,7 @@ mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
     console.log(
-      "> Connected to the database \n Database can be seen at http://localhost:5000/api/items"
+      `> Connected to the database \n Database can be seen at http://localhost:${port}/api/items`
     )
   )
   .catch((err) => console.log(err));
@@ -37,5 +37,5 @@ if (process.env.NODE_ENV === "production") {
 const port = process.env.PORT || 5000;
 
 app.listen(port, () =>
-  console.log(`\n > Server Running at http://localhost:5000 \n`)
+  console.log(`\n > Server Running at http://localhost:${port} \n`)
 );
