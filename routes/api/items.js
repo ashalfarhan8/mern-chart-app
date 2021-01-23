@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 // Item Model
-const Item = require("../../models/Item");
+const Item = require("../../models/item");
 
 // @route  GET api/items
 // @desc   Get All Items
 // @access Public
 router.get("/", (req, res) => {
+  console.log(Item);
   Item.find()
     .sort({ date: -1 })
     .then((items) => res.json(items));
