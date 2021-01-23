@@ -5,6 +5,7 @@
 /config
 node_modules/
 node_modules
+.env
 
 client/.pnp
 client/.pnp.js
