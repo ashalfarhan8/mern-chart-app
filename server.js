@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const items = require("./routes/api/items.js");
+const items = require("./routes/api/items");
 const path = require("path");
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // DB Config
 // Create keys file where the mongo URI will be stored
-const db = require("./config/keys.js").mongoURI;
+const db = require("./config/keys").mongoURI;
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
