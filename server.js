@@ -1,8 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const items = require("./routes/api/items");
-const path = require("path");
+import path from 'path';
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import { mongoURI } from './config/keys.js';
+
+// Route
+import itemRoute from './routes/api/items.js';
 
 const app = express();
 
@@ -11,7 +14,9 @@ app.use(bodyParser.json());
 
 // DB Config
 // Create keys file where the mongo URI will be stored
-const db = require("./config/keys").mongoURI;
+const db = mongoURI;
+
+// Connecting
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
@@ -22,15 +27,15 @@ mongoose
   .catch((err) => console.log(err));
 
 // use Routes
-app.use("/api/items", items);
+app.use('/api/items', itemRoute);
 
 // Set static assets if in production
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static("client/build"));
+  app.use(express.static('client/build'));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
