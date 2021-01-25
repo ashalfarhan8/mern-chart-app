@@ -2,7 +2,7 @@ import path from 'path';
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import { mongoURI } from './config/keys.js';
+// import { mongoURI } from './config/keys.js';
 
 // Route
 import itemRoute from './routes/api/items.js';
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 // DB Config
 // Create keys file where the mongo URI will be stored
-const db = mongoURI;
+const db = process.env.MONGO_URI || mongoURI;
 
 // Connecting
 mongoose
