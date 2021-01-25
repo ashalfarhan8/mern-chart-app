@@ -18,7 +18,11 @@ const db = process.env.MONGO_URI || mongoURI;
 
 // Connecting
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() =>
     console.log(
       `> Connected to the database \n Database can be seen at http://localhost:${port}/api/items`
